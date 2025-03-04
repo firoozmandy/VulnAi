@@ -2,8 +2,8 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-import BigDashboard from "./BigDashboard";
-import MiniDashboard from "./MiniDashboard";
+import BigDashboard from "../Dashboard/BigDashboard";
+import MiniDashboard from "../Dashboard/MiniDashboard";
 import ChatUI from "../Chat/ChatUi";
 import UsePost from "../context/UsePostContext";
 

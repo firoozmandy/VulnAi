@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router";
 import "./App.css";
 import { ChatContext } from "./Components/context/ChatContext";
-import ChatDashboard from "./Components/Dashboard/ChatDashboard";
+import ChatDashboard from "./Components/ChatDashboard/ChatDashboard";
 
 function App() {
   return (
