@@ -32,7 +32,7 @@ function ChatInput() {
       setTimeout(() => {
         setMessages((prevMessages) => [
           ...prevMessages,
-          { id: prevMessages.length + 1, text: "پیام دریافتی!", sender: "bot" },
+          { id: prevMessages.length + 1, text: "Scanned for 27 seconds ", sender: "bot" },
         ]);
       }, 1000);
     }
