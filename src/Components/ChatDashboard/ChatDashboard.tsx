@@ -102,6 +102,7 @@ function ChatDashboard() {
                 {/* Replace with your content */}
                 <div className="py-0">
                   <div className="h-lvh rounded-lg">
+                    
                     <ChatUI />
                     {/* <div className="flex w-full text-white">
                       <ChatInput />
