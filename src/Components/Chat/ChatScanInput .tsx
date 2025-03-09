@@ -5,10 +5,9 @@ import { ImLink } from "react-icons/im";
 import { MdQrCodeScanner } from "react-icons/md";
 
 import { useRef } from "react";
+import { useChat } from "../context/ChatProvider";
 
-import UsePost from "../context/UsePostContext";
-
-function ChatInput() {
+function ChatScanInput () {
   const {
     input,
     setInput,
@@ -16,7 +15,7 @@ function ChatInput() {
     setFirstTimeTyping,
     messages,
     setMessages,
-  } = UsePost();
+  } = useChat();
 
   const hasTyped = useRef(false);
   const handleSendMessage = () => {
@@ -28,17 +27,23 @@ function ChatInput() {
       };
       setMessages([...messages, newMessage]);
       setInput("");
-
+      // text bot vuln
       setTimeout(() => {
         setMessages((prevMessages) => [
           ...prevMessages,
-          { id: prevMessages.length + 1, text: "Scanned for 27 seconds ", sender: "bot" },
+          {
+            id: prevMessages.length + 1,
+            text: "Scanned for 27 seconds ",
+            sender: "bot",
+          },
         ]);
       }, 1000);
     }
   };
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
+
+    // Checking user typing
 
     if (!hasTyped.current) {
       setFirstTimeTyping(false);
@@ -50,7 +55,7 @@ function ChatInput() {
     <div
       className={`flex bg-neutral-600 flex-col rounded-lg px-4 py-2 mx-auto ${
         firstTimeTyping
-          ? "sm:min-w-2/5 w-72 top-72 right-2 sm:right-64 absolute sm:top-72 "
+          ? "md:min-w-2/5 w-72 top-72 right-2 sm:right-48 md:right-20 xl:right-56 absolute sm:top-72 "
           : "w-full"
       }`}
     >
@@ -72,11 +77,11 @@ function ChatInput() {
             <AiOutlineGlobal />
             DeepScan
           </div>
-          <div className="md:flex hidden items-center border rounded-full md:text-xs text-[9px] px-2">
+          <div className="lg:flex hidden items-center border rounded-full md:text-xs text-[9px] px-2">
             <AiOutlineGlobal />
             PortScan
           </div>
-          <div className="md:flex hidden items-center border rounded-full md:text-xs text-[9px] px-2">
+          <div className="xl:flex hidden items-center border rounded-full md:text-xs text-[9px] px-2">
             <AiOutlineGlobal />
             DNS Check
           </div>
@@ -97,4 +102,4 @@ function ChatInput() {
   );
 }
 
-export default ChatInput;
+export default ChatScanInput ;

@@ -1,4 +1,4 @@
-import { createContext, JSX, useState } from "react";
+import { createContext, useContext, useState, ReactNode } from "react";
 
 type MessageType = {
   id: number;
@@ -17,16 +17,17 @@ type ContextType = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const ContextProvider = createContext<ContextType | undefined>(undefined);
+// 👇 تغییر نام کانتکست به `ChatContext`
+const ChatContext = createContext<ContextType | undefined>(undefined);
 
-function ChatContext({ children }: { children: JSX.Element }) {
+function ChatProvider({ children }: { children: ReactNode }) {
   const [messages, setMessages] = useState<MessageType[]>([]);
   const [input, setInput] = useState<string>("");
   const [firstTimeTyping, setFirstTimeTyping] = useState<boolean>(true);
   const [open, setOpen] = useState<boolean>(true);
 
   return (
-    <ContextProvider.Provider
+    <ChatContext.Provider
       value={{
         messages,
         setMessages,
@@ -39,9 +40,14 @@ function ChatContext({ children }: { children: JSX.Element }) {
       }}
     >
       {children}
-    </ContextProvider.Provider>
+    </ChatContext.Provider>
   );
 }
 
+function useChat() {
+  const context = useContext(ChatContext);
+  if (!context) throw new Error("ChatContext is not available!");
+  return context;
+}
 
-export { ChatContext, ContextProvider };
+export { ChatProvider, useChat };

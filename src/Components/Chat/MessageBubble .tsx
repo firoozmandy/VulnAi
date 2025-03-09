@@ -8,7 +8,7 @@ interface MessageProps {
   avatar: string;
 }
 
-const MessageBot: React.FC<MessageProps> = ({
+const MessageBubble : React.FC<MessageProps> = ({
   text,
   sender,
   name,
@@ -61,4 +61,4 @@ const MessageBot: React.FC<MessageProps> = ({
   );
 };
 
-export default MessageBot;
+export default MessageBubble ;

@@ -1,17 +1,16 @@
 import { BrowserRouter } from "react-router";
-import "./App.css";
-import { ChatContext } from "./Components/context/ChatContext";
-import ChatDashboard from "./Components/ChatDashboard/ChatDashboard";
+import { ChatProvider } from "./Components/context/ChatProvider";
+import ChatDashboard from "./Components/ChatDashboard/ChatLayout ";
 
 function App() {
   return (
-    <ChatContext>
+    <ChatProvider>
       <BrowserRouter>
         <div className="min-h-screen">
           <ChatDashboard />
         </div>
       </BrowserRouter>
-    </ChatContext>
+    </ChatProvider>
   );
 }
 

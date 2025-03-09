@@ -2,14 +2,14 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-import BigDashboard from "../Dashboard/BigDashboard";
-import MiniDashboard from "../Dashboard/MiniDashboard";
+import DashboardSidebar  from "../Dashboard/DashboardSidebar ";
+import CollapsedSidebar  from "../Dashboard/CollapsedSidebar ";
 import ChatUI from "../Chat/ChatUi";
-import UsePost from "../context/UsePostContext";
+import { useChat } from "../context/ChatProvider";
 
 function ChatDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const { open } = UsePost();
+  const { open } = useChat();
 
   return (
     <>
@@ -67,8 +67,8 @@ function ChatDashboard() {
                     </div>
                   </Transition.Child>
                   <div className="h-0 flex-1">
-                    <BigDashboard />
-                    {open === true ? "" : <MiniDashboard />}
+                    <DashboardSidebar  />
+                    {open === true ? "" : <CollapsedSidebar  />}
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
@@ -82,8 +82,8 @@ function ChatDashboard() {
         {/* Static sidebar for desktop */}
         <div className="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <BigDashboard />
-          {open === true ? "" : <MiniDashboard />}
+          <DashboardSidebar  />
+          {open === true ? "" : <CollapsedSidebar  />}
         </div>
         <div className="flex flex-1 flex-col md:pl-64">
           <div className="sticky top-0 z-10 bg-gray-950 pl-1 pt-1 sm:pl-3 sm:pt-3 md:hidden">
@@ -102,14 +102,9 @@ function ChatDashboard() {
                 {/* Replace with your content */}
                 <div className="py-0">
                   <div className="h-lvh rounded-lg">
-                    
                     <ChatUI />
-                    {/* <div className="flex w-full text-white">
-                      <ChatInput />
-                    </div> */}
                   </div>
                 </div>
-                {/* /End replace */}
               </div>
             </div>
           </main>

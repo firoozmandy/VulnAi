@@ -4,19 +4,18 @@ import { LuPanelLeftClose } from "react-icons/lu";
 import { MdAppShortcut } from "react-icons/md";
 
 import { NavLink } from "react-router";
-import UsePost from "../context/UsePostContext";
+import { useChat } from "../context/ChatProvider";
 
-
-function BigDashboard() {
-  const { open, setOpen } = UsePost();
+function DashboardSidebar () {
+  const { open, setOpen } = useChat();
 
   return (
     <>
       <div
-        className="w-60"
+        className="w-60 min-h-screen h-full bg-black"
         style={{ display: open ? "block" : "none" }}
       >
-        <div>
+        <div className=" ">
           <div className="text-purple-200 font-semibold bg-black h-14 mx-auto flex flex-row md:gap-30 gap-5 px-4 py-5">
             <p className=""> VulnAI</p>
             <LuPanelLeftClose
@@ -25,7 +24,7 @@ function BigDashboard() {
             />
           </div>
 
-          <div className=" bg-black ">
+          <div className="  ">
             <div className="text-sm">
               <NavLink
                 to="#"
@@ -61,17 +60,13 @@ function BigDashboard() {
                 telegram.org
               </NavLink>
             </div>
-            <div className="w-full h-60  ">
-              
-            </div>
+            <div className="w-full md:h-60 lg:h-56 h-20 xl:h-60 "></div>
 
             <div className="flex items-end flex-col">
               <div className="w-[90%] h-8 border gap-2 mx-3 px-2 rounded-lg border-blue-600 flex items-center justify">
                 <MdAppShortcut className="text-white" />
 
-                <p className="text-xs rounded-lg text-white">
-                  Get App
-                </p>
+                <p className="text-xs rounded-lg text-white">Get App</p>
                 <div className="bg-blue-600 text-[8px] w-7 px-[3px] rounded-full text-white">
                   NEW
                 </div>
@@ -82,9 +77,7 @@ function BigDashboard() {
                   <BiSolidUser className="w-full" />
                 </div>
 
-                <p className="text-xs rounded-lg text-white">
-                  My Profile
-                </p>
+                <p className="text-xs rounded-lg text-white">My Profile</p>
               </div>
             </div>
           </div>
@@ -94,4 +87,4 @@ function BigDashboard() {
   );
 }
 
-export default BigDashboard;
+export default DashboardSidebar ;

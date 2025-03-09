@@ -1,19 +1,19 @@
 import { useEffect, useRef } from "react";
-import UsePost from "../context/UsePostContext";
-import MessageBot from "./MessageBot";
+import MessageBubble  from "./MessageBubble ";
+import { useChat } from "../context/ChatProvider";
 
 function Messages() {
-  const { firstTimeTyping, messages } = UsePost();
+  const { firstTimeTyping, messages } = useChat();
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // اسکرول خودکار به آخرین پیام
+  // scorrol
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   return (
     <div className="flex flex-col space-y-4 overflow-hidden h-full">
-      <div className="flex flex-col space-y-4 overflow-y-auto max-h-[70vh] px-4">
+      <div className="overflow-y-auto max-h-[500px] scrollbar scrollbar-thumb-gray-400 scrollbar-track-gray-900">
         {messages
           .filter((msg) => msg.text.trim() !== "")
           .map((msg) => (
@@ -36,9 +36,9 @@ function Messages() {
                   <span>{msg.text}</span>
                 )}
 
-                {/* پیام‌های bot داخل کامپوننت MessageBot */}
+                {/* پیام‌های bot داخل کامپوننت MessageBubble  */}
                 {msg.sender === "bot" && (
-                  <MessageBot
+                  <MessageBubble 
                     id={msg.id}
                     text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas purus viverra accumsan in nisl nisi. Arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque. In egestas erat imperdiet sed euismod nisi porta lorem mollis. Morbi tristique senectus et netus. Mattis pellentesque id nibh tortor id aliquet lectus proin..."
                     sender="bot"

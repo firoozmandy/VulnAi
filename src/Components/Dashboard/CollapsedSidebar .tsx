@@ -1,14 +1,13 @@
-
 import { BiSolidUser } from "react-icons/bi";
 import { GoComment } from "react-icons/go";
 import { ImInfinite } from "react-icons/im";
 import { LuPanelRightClose } from "react-icons/lu";
 import { MdAppShortcut } from "react-icons/md";
 
-import UsePost from "../context/UsePostContext";
+import { useChat } from "../context/ChatProvider";
 
-function MiniDashboard() {
-  const { open, setOpen } = UsePost();
+function CollapsedSidebar () {
+  const { open, setOpen } = useChat();
 
   return (
     <div className="">
@@ -51,4 +50,4 @@ function MiniDashboard() {
   );
 }
 
-export default MiniDashboard;
+export default CollapsedSidebar ;
