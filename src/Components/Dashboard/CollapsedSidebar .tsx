@@ -11,7 +11,7 @@ function CollapsedSidebar () {
 
   return (
     <div className="">
-      <div className="bg-black md:h-full w-14 items-center flex gap-10 flex-col">
+      <div className="bg-black md:h-screen w-14 items-center flex gap-10 flex-col">
         <div className="mt-5 border border-blue-700 rounded-full p-1">
           <ImInfinite
             className="hover:text-purple text-xl font-thin cursor-pointer text-blue-700"
